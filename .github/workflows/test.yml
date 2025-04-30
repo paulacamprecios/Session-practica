@@ -23,4 +23,4 @@ jobs:
         pip install -r requirements.txt || true  # If no file, skip error
 
     - name: Run unittest
-      run: python test.py
+      run: python TestOperations.py
