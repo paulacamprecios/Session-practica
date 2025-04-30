@@ -1,0 +1,26 @@
+name: Run Unit Tests on Pull Request
+
+on:
+  pull_request:
+    branches:
+      - master  # or main, depending on your repo
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'  # or another version
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt || true  # If no file, skip error
+
+    - name: Run unittest
+      run: python test.py
